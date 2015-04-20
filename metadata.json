@@ -1,5 +1,5 @@
 {
-  "name": "openstackci-mediawiki",
+  "name": "openstackinfra-mediawiki",
   "version": "0.0.1",
   "author": "Openstack CI",
   "summary": "Puppet module for mediawiki",
@@ -18,6 +18,6 @@
   "dependencies": [
     { "name": "puppetlabs/stdlib", "version_requirement": ">= 3.2.0" },
     { "name": "puppetlabs/apache", "version_requirement": "= 0.0.4" },
-    { "name": "openstackci/vcsrepo", "version_requirement": "= 0.0.8" }
+    { "name": "openstackinfra/vcsrepo", "version_requirement": "= 0.0.8" }
   ]
 }
