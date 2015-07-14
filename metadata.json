@@ -17,7 +17,7 @@
 
   "dependencies": [
     { "name": "puppetlabs/stdlib", "version_requirement": ">= 3.2.0" },
-    { "name": "puppetlabs/apache", "version_requirement": "= 0.0.4" },
+    { "name": "openstackinfra/httpd", "version_requirement": "0.x" },
     { "name": "openstackinfra/vcsrepo", "version_requirement": "= 0.0.8" }
   ]
 }
