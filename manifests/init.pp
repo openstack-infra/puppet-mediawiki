@@ -20,7 +20,7 @@ class mediawiki(
       ensure => present,
     }
 
-    include apache
+    include ::httpd
     include mediawiki::php
     include mediawiki::app
 
@@ -35,7 +35,7 @@ class mediawiki(
         group   => 'root',
         mode    => '0640',
         content => $ssl_cert_file_contents,
-        before  => Apache::Vhost[$site_hostname],
+        before  => ::Httpd::Vhost[$site_hostname],
       }
     }
 
@@ -45,7 +45,7 @@ class mediawiki(
         group   => 'ssl-cert',
         mode    => '0640',
         content => $ssl_key_file_contents,
-        before  => Apache::Vhost[$site_hostname],
+        before  => ::Httpd::Vhost[$site_hostname],
       }
     }
 
@@ -55,21 +55,21 @@ class mediawiki(
         group   => 'root',
         mode    => '0640',
         content => $ssl_chain_file_contents,
-        before  => Apache::Vhost[$site_hostname],
+        before  => ::Httpd::Vhost[$site_hostname],
       }
     }
 
-    apache::vhost { $site_hostname:
+    ::httpd::vhost { $site_hostname:
       port     => 443,
       docroot  => 'MEANINGLESS ARGUMENT',
       priority => '50',
       template => 'mediawiki/apache/mediawiki.erb',
       ssl      => true,
     }
-    a2mod { 'rewrite':
+    httpd_mod { 'rewrite':
       ensure => present,
     }
-    a2mod { 'expires':
+    httpd_mod { 'expires':
       ensure => present,
     }
   }
