@@ -1,16 +1,16 @@
 # Class: mediawiki
 #
 class mediawiki(
-  $role = '',
-  $site_hostname = '',
-  $mediawiki_location = '',
-  $mediawiki_images_location = '',
-  $ssl_cert_file = "/etc/ssl/certs/${::fqdn}.pem",
-  $ssl_key_file = "/etc/ssl/private/${::fqdn}.key",
-  $ssl_chain_file = '',
-  $ssl_cert_file_contents = '', # If left empty puppet will not create file.
-  $ssl_key_file_contents = '',  # If left empty puppet will not create file.
-  $ssl_chain_file_contents = '' # If left empty puppet will not create file.
+  $role = 'all',
+  $site_hostname = $::fqdn,
+  $mediawiki_location = '/srv/mediawiki/w',
+  $mediawiki_images_location = '/srv/mediawiki/images',
+  $ssl_cert_file = '/etc/ssl/certs/ssl-cert-snakeoil.pem',
+  $ssl_key_file = '/etc/ssl/private/ssl-cert-snakeoil.key',
+  $ssl_chain_file = undef,
+  $ssl_cert_file_contents = undef, # If left empty puppet will not create file.
+  $ssl_key_file_contents = undef,  # If left empty puppet will not create file.
+  $ssl_chain_file_contents = undef # If left empty puppet will not create file.
 ) {
 
   if ($role == 'app' or $role == 'all') {
@@ -29,7 +29,7 @@ class mediawiki(
       ensure => present,
     }
 
-    if $ssl_cert_file_contents != '' {
+    if $ssl_cert_file_contents != undef {
       file { $ssl_cert_file:
         owner   => 'root',
         group   => 'root',
@@ -39,7 +39,7 @@ class mediawiki(
       }
     }
 
-    if $ssl_key_file_contents != '' {
+    if $ssl_key_file_contents != undef {
       file { $ssl_key_file:
         owner   => 'root',
         group   => 'ssl-cert',
@@ -49,7 +49,7 @@ class mediawiki(
       }
     }
 
-    if $ssl_chain_file_contents != '' {
+    if $ssl_chain_file_contents != undef {
       file { $ssl_chain_file:
         owner   => 'root',
         group   => 'root',

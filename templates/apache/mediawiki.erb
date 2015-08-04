@@ -42,7 +42,10 @@
         SSLProtocol All -SSLv2 -SSLv3
         SSLCertificateFile      <%= scope.lookupvar("mediawiki::ssl_cert_file") %>
         SSLCertificateKeyFile   <%= scope.lookupvar("mediawiki::ssl_key_file") %>
-        <% if scope.lookupvar("mediawiki::ssl_chain_file") != "" %>
+        <%# The original default was '' -%>
+        <%# scope.lookupvar returns nil for an undefined variable in puppet 4 -%>
+        <%# scope.lookupvar returns :undef for an undefined variable in puppet 3 -%>
+        <% unless ['', nil, :undef].include?(scope.lookupvar("mediawiki::ssl_chain_file")) %>
           SSLCertificateChainFile <%= scope.lookupvar("mediawiki::ssl_chain_file") %>
         <% end %>
 
