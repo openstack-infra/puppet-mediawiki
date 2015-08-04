@@ -68,9 +68,11 @@ class mediawiki(
     }
     httpd_mod { 'rewrite':
       ensure => present,
+      before => Service['httpd'],
     }
     httpd_mod { 'expires':
       ensure => present,
+      before => Service['httpd'],
     }
   }
   if ($role == 'image-scaler' or $role == 'all') {
