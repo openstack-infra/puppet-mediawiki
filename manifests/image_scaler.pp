@@ -56,5 +56,5 @@ class mediawiki::image_scaler {
     'xfonts-scalable']:
     ensure => present,
   }
-  include tmpreaper
+  include ::tmpreaper
 }

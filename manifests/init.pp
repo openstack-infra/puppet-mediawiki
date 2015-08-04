@@ -21,8 +21,8 @@ class mediawiki(
     }
 
     include ::httpd
-    include mediawiki::php
-    include mediawiki::app
+    include ::mediawiki::php
+    include ::mediawiki::app
 
     package { ['libapache2-mod-php5',
       'lua5.2']:
@@ -76,9 +76,9 @@ class mediawiki(
     }
   }
   if ($role == 'image-scaler' or $role == 'all') {
-    include mediawiki::image_scaler
-    include mediawiki::php
-    include mediawiki::app
+    include ::mediawiki::image_scaler
+    include ::mediawiki::php
+    include ::mediawiki::app
   }
 }
 
