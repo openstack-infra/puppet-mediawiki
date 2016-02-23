@@ -10,7 +10,12 @@ class mediawiki(
   $ssl_chain_file = undef,
   $ssl_cert_file_contents = undef, # If left empty puppet will not create file.
   $ssl_key_file_contents = undef,  # If left empty puppet will not create file.
-  $ssl_chain_file_contents = undef # If left empty puppet will not create file.
+  $ssl_chain_file_contents = undef, # If left empty puppet will not create file.
+  $wg_dbpassword = undef,
+  $wg_secretkey = undef,
+  $wg_upgradekey = undef,
+  $wg_captchaquestions_answer = undef,
+  $wg_googleanalyticsaccount = undef,
 ) {
 
   if ($role == 'app' or $role == 'all') {
@@ -18,6 +23,16 @@ class mediawiki(
     # compatible with puppetlabs-apache 0.0.4:
     package { ['libaprutil1-dev', 'libapr1-dev', 'apache2-prefork-dev']:
       ensure => present,
+    }
+
+    file { '/srv/mediawiki':
+      ensure => directory,
+    }
+
+    file { '/srv/mediawiki/Settings.php':
+      ensure  => file,
+      content => template('mediawiki/Settings.php.erb'),
+      require => File['/srv/mediawiki'],
     }
 
     include ::httpd
