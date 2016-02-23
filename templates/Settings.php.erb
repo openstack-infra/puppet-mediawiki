@@ -1,0 +1,289 @@
+<?php
+## Uncomment this to disable output compression
+# $wgDisableOutputCompression = true;
+
+$wgSitename      = "OpenStack";
+
+## The URL base path to the directory containing the wiki;
+## defaults for all runtime URL paths are based off of this.
+## For more information on customizing the URLs
+## (like /w/index.php/Page_title to /wiki/Page_title) please see:
+## http://www.mediawiki.org/wiki/Manual:Short_URL
+$wgScriptPath       = "/w";
+$wgScriptExtension  = ".php";
+$wgArticlePath = '/wiki/$1';
+
+## The protocol and server name to use in fully-qualified URLs
+$wgServer           = "https://wiki.openstack.org";
+
+## The relative URL path to the skins directory
+$wgStylePath        = "$wgScriptPath/skins";
+
+## The relative URL path to the logo.  Make sure you change this from the default,
+## or else you'll overwrite your logo when you upgrade!
+#$wgLogo             = "https://wiki.openstack.org/w/images/4/4c/OpenStack.png";
+$wgLogo             = "https://wiki.openstack.org/w/images/thumb/c/c4/OpenStack_Logo_-_notext.png/30px-OpenStack_Logo_-_notext.png";
+
+## UPO means: this is also a user preference option
+
+$wgEnableEmail      = true;
+$wgEnableUserEmail  = true; # UPO
+$wgRequirePasswordforEmailChange = false;
+
+$wgEmergencyContact = "noc@openstack.org";
+$wgPasswordSender   = "noc@openstack.org";
+
+$wgEnotifUserTalk      = true; # UPO
+$wgEnotifWatchlist     = true; # UPO
+$wgEmailAuthentication = true;
+
+## Database settings
+$wgDBtype           = "mysql";
+$wgDBserver         = "localhost";
+$wgDBname           = "openstack_wiki";
+$wgDBuser           = "wikiuser";
+$wgDBpassword       = "<%= scope.lookupvar('::mediawiki::wg_dbpassword') %>";
+
+# MySQL specific settings
+$wgDBprefix         = "";
+
+# MySQL table options to use during installation or update
+$wgDBTableOptions   = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
+
+# Experimental charset support for MySQL 5.0.
+$wgDBmysql5 = false;
+
+# TODO: add a cron to run jobs and set this
+#$wgJobRunRate = 0;
+
+# Disable showing IP in the header (which break frontend caching)
+$wgShowIPinHeader = false;
+
+$wgDisableCounters = true;
+
+$wgCacheDirectory = "$IP/cache";
+
+# New-style Object cache (and session) settings
+$wgObjectCaches['memcached-pecl'] = array(
+        'class'      => 'MemcachedPeclBagOStuff',
+        #'serializer' => 'igbinary',
+        'servers'    => array(
+                '127.0.0.1:11000',
+        )
+);
+
+$wgMainCacheType = 'memcached-pecl';
+$wgParserCacheType = 'memcached-pecl';
+$wgMessageCacheType = 'memcached-pecl';
+$wgMemCachedPersistent = false;
+$wgUseMemCached = true;
+$wgMemCachedTimeout = 250000;
+$wgMemCachedInstanceSize = 2000;
+$wgSessionCacheType = 'memcached-pecl';
+$wgSessionsInObjectCache = true;
+
+## Old-style Shared memory settings
+#$wgMainCacheType    = CACHE_MEMCACHED;
+#$wgParserCacheType = CACHE_MEMCACHED;
+#$wgMessageCacheType = CACHE_MEMCACHED;
+#$wgSessionsInMemcached = true;
+#$wgMemCachedServers = array( '127.0.0.1:11000' );
+
+#TODO: generate the interwiki cdb and place it in the cache directory; ugh,
+# seems this is Wikimedia specific for now (bug 33395)
+#$wgInterwikiCache = "$wgCacheDirectory/interwiki.cdb";
+
+$wgCookieSecure = true;
+
+$wgAllowUserCss = true;
+$wgAllowUserJs = true;
+
+## To enable image uploads, make sure the 'images' directory
+## is writable, then set this to true:
+$wgEnableUploads  = true;
+$wgUseImageMagick = true;
+$wgImageMagickConvertCommand = "/usr/bin/convert";
+$wgUploadDirectory = "/srv/mediawiki/images";
+$wgFileExtensions[] = 'svg';
+$wgFileExtensions[] = 'pdf';
+
+# InstantCommons allows wiki to use images from http://commons.wikimedia.org
+$wgUseInstantCommons  = false;
+
+## If you use ImageMagick (or any other shell command) on a
+## Linux server, this will need to be set to the name of an
+## available UTF-8 locale
+$wgShellLocale = "en_US.utf8";
+
+# Site language code, should be one of the list in ./languages/Names.php
+$wgLanguageCode = "en";
+
+$wgSecretKey = "<%= scope.lookupvar('::mediawiki::wg_secretkey') %>";
+
+# Site upgrade key. Must be set to a string (default provided) to turn on the
+# web installer while LocalSettings.php is in place
+$wgUpgradeKey = "<%= scope.lookupvar('::mediawiki::wg_upgradekey') %>";
+
+## For attaching licensing metadata to pages, and displaying an
+## appropriate copyright notice / icon. GNU Free Documentation
+## License and Creative Commons licenses are supported so far.
+$wgRightsPage = ""; # Set to the title of a wiki page that describes your license/copyright
+$wgRightsUrl  = "";
+$wgRightsText = "";
+$wgRightsIcon = "";
+
+# Path to the GNU diff3 utility. Used for conflict resolution.
+$wgDiff3 = "/usr/bin/diff3";
+
+# Query string length limit for ResourceLoader. You should only set this if
+# your web server has a query string length limit (then set it to that limit),
+# or if you have suhosin.get.max_value_length set in php.ini (then set it to
+# that value)
+$wgResourceLoaderMaxQueryLength = -1;
+
+# Only allow logged-in users to edit
+$wgGroupPermissions['*']['edit'] = false;
+
+## Content suppression (for *really* nasty spam or DMCA notices)
+# Allow sysops to hide revisions/log items from users
+$wgGroupPermissions['sysop']['deleterevision']  = true;
+$wgGroupPermissions['sysop']['createaccount'] = true;
+# Allow members of the suppress group to hide usernames from users and Sysops
+$wgGroupPermissions['suppress']['hideuser'] = true;
+# Allow members of the suppress group to hide revisions/log items from users and Sysops
+$wgGroupPermissions['suppress']['deleterevision']  = true;
+$wgGroupPermissions['suppress']['suppressrevision'] = true;
+# Allow members of the suppress group to see the supression log
+$wgGroupPermissions['suppress']['suppressionlog'] = true;
+
+# Useful for debugging purposes, and doesn't expose very sensitive info
+$wgShowExceptionDetails = true;
+
+$wgEnableCreativeCommonsRdf = true;
+$wgRightsPage = "";
+$wgRightsUrl = "http://creativecommons.org/licenses/by/3.0/";
+$wgRightsText = "Attribution 3.0 Unported (CC BY 3.0)";
+$wgRightsIcon = "{$wgStylePath}/common/images/cc-by.png";
+
+$wgNamespacesWithSubpages[NS_MAIN] = 1;
+
+## Skins
+
+$wgSkipSkins = array("chick", "cologneblue", "nostalgia", "simple", "standard", "monobook", "modern", "myskin", "vector");
+require_once( "$IP/skins/strapping/strapping.php" );
+$wgDefaultSkin = "strapping";
+$wgStrappingSkinLogoLocation = 'navbar';
+$wgStrappingSkinLoginLocation = 'navbar';
+$wgStrappingSkinAnonNavbar = true;
+$wgStrappingSkinUseStandardLayout = false;
+$wgStrappingSkinDisplaySidebarNavigation = false;
+
+$wgExtraNamespaces[110] = 'Obsolete';
+$wgExtraNamespaces[111] = 'Obsolete_talk';
+$wgNamespacesWithSubpages[110] = true;
+
+## Extensions
+
+require_once( "$IP/extensions/ConfirmEdit/QuestyCaptcha.php" );
+
+$wgCaptchaClass = 'QuestyCaptcha';
+$wgCaptchaQuestions[] = array( 'question' => 'What\'s the secret word?', 'answer' => "<%= scope.lookupvar('::mediawiki::wg_captchaquestions_answer') %>" );
+$wgGroupPermissions['user'         ]['skipcaptcha'] = true;
+
+require_once( "$IP/extensions/OpenID/OpenID.php" );
+# Don't disallow non-openid logins
+$wgOpenIDOnly = false;
+# Automatically mark email addreses provided by openid as verified
+$wgOpenIDTrustEmailAddress = true;
+# Our servername
+$wgTrustRoot = 'https://wiki.openstack.org/';
+# Only allow login through launchpad (in earlier versions of the plugin,
+# wgOpenIDConsumerForce was used instead of wgOpenIDForcedProvider)
+$wgOpenIDForcedProvider = 'https://login.launchpad.net/+openid';
+$wgOpenIDAllowExistingAccountSelection = false;
+$wgOpenIDAllowAutomaticUsername = false;
+
+require_once( "$IP/extensions/Renameuser/Renameuser.php" );
+
+require_once( "$IP/extensions/WikiEditor/WikiEditor.php" );
+$wgDefaultUserOptions['usebetatoolbar'] = 1;
+$wgDefaultUserOptions['usebetatoolbar-cgd'] = 1;
+
+# Add syntax highlighting and such to the editor when editing code
+require "$IP/extensions/CodeEditor/CodeEditor.php";
+
+require( "$IP/extensions/Scribunto/Scribunto.php" );
+$wgScribuntoDefaultEngine = 'luastandalone';
+$wgScribuntoUseGeSHi = true;
+$wgScribuntoUseCodeEditor = true;
+$wgScribuntoEngineConf['luastandalone']['luaPath'] = '/usr/bin/lua';
+
+# Globally enableable Javascript gadgets
+require_once( "$IP/extensions/Gadgets/Gadgets.php" );
+
+require_once("$IP/extensions/CategoryTree/CategoryTree.php");
+
+require_once( "$IP/extensions/ParserFunctions/ParserFunctions.php");
+
+# Syntax highlighting of in-content code via <source lang="blah"></source>
+require_once( "$IP/extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php" );
+
+# Proper citations
+require_once( "$IP/extensions/Cite/Cite.php" );
+
+# Extension which provides localised language names based on CLDR data
+require_once( "$IP/extensions/cldr/cldr.php" );
+
+# Extension to easily allow users to display languages they speak on their user pages
+require_once( "$IP/extensions/Babel/Babel.php" );
+
+# Interface for translating page contents
+require_once( "$IP/extensions/Translate/Translate.php" );
+$wgGroupPermissions['user']['translate'] = true;
+$wgTranslateDocumentationLanguageCode = 'info';
+$wgGroupPermissions['sysop']['pagetranslation'] = true;
+$wgEnablePageTranslation = true;
+
+# Interface for creating pdfs and books
+require_once("$IP/extensions/Collection/Collection.php");
+$wgGroupPermissions['user']['collectionsaveascommunitypage'] = true;
+$wgGroupPermissions['user']['collectionsaveasuserpage']      = true;
+
+# Extension to allow admins to mass delete pages (useful for spam)
+require_once("$IP/extensions/Nuke/Nuke.php");
+
+# Prevent creation of usernames that are meant to spoof other users (useful for spam)
+require_once( "$IP/extensions/AntiSpoof/AntiSpoof.php" );
+
+include_once("$IP/extensions/Mantle/Mantle.php");
+
+#TODO: add MobileFrontend - requires device detection, which means we need varnish
+# Mobile view of the site
+require_once("$IP/extensions/MobileFrontend/MobileFrontend.php");
+$wgMFAutodetectMobileView = true;
+
+# Needed by MobileFrontend
+require_once( "$IP/extensions/OpenSearchXml/OpenSearchXml.php" );
+
+require_once( "$IP/extensions/SubPageList3/SubPageList3.php" );
+
+require_once( "$IP/extensions/EmbedVideo/EmbedVideo.php" );
+
+require_once( "$IP/extensions/ReplaceText/ReplaceText.php" );
+$wgGroupPermissions['sysop']['replacetext'] = true;
+
+require_once( "$IP/extensions/googleAnalytics/googleAnalytics.php" );
+$wgGoogleAnalyticsAccount = "<%= scope.lookupvar('::mediawiki::wg_googleanalyticsaccount') %>";
+
+require_once( "$IP/extensions/Echo/Echo.php" );
+
+# Disabled for now, due to weird interface positioning
+require_once( "$IP/extensions/UniversalLanguageSelector/UniversalLanguageSelector.php" );
+$wgULSPosition = 'personal';
+$wgULSGeoService = true;
+
+require_once( "$IP/extensions/Elastica/Elastica.php" );
+require_once( "$IP/extensions/CirrusSearch/CirrusSearch.php" );
+$wgCirrusSearchServers = array( '127.0.0.1' );
+$wgCirrusSearchShardCount = array( 'content' => 5, 'general' => 5 );
+$wgSearchType = 'CirrusSearch';
