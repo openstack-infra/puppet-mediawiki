@@ -183,7 +183,7 @@ $wgExtraNamespaces[111] = 'Obsolete_talk';
 $wgNamespacesWithSubpages[110] = true;
 
 ## Extensions
-#
+# https://www.mediawiki.org/wiki/Extension:QuestyCaptcha
 require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
 require_once( "$IP/extensions/ConfirmEdit/QuestyCaptcha.php" );
 $wgCaptchaClass = 'QuestyCaptcha';
@@ -195,7 +195,9 @@ $arr = array (
 foreach ( $arr as $key => $value ) {
     $wgCaptchaQuestions[] = array( 'question' => $key, 'answer' => $value );
 }
-$wgGroupPermissions['user'         ]['skipcaptcha'] = true;
+$wgMainCacheType             = CACHE_ANYTHING;
+$wgCaptchaTriggers['edit']   = true;
+$wgCaptchaTriggers['create'] = true;
 
 require_once( "$IP/extensions/OpenID/OpenID.php" );
 # Don't disallow non-openid logins
