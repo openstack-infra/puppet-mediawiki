@@ -183,12 +183,16 @@ $wgExtraNamespaces[111] = 'Obsolete_talk';
 $wgNamespacesWithSubpages[110] = true;
 
 ## Extensions
-
+# https://www.mediawiki.org/wiki/Extension:QuestyCaptcha
+require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
 require_once( "$IP/extensions/ConfirmEdit/QuestyCaptcha.php" );
 
 $wgCaptchaClass = 'QuestyCaptcha';
 $wgCaptchaQuestions[] = array( 'question' => 'What\'s the secret word?', 'answer' => "<%= scope.lookupvar('::mediawiki::wg_captchaquestions_answer') %>" );
-$wgGroupPermissions['user'         ]['skipcaptcha'] = true;
+
+$wgMainCacheType             = CACHE_ANYTHING;
+$wgCaptchaTriggers['edit']   = true;
+$wgCaptchaTriggers['create'] = true;
 
 require_once( "$IP/extensions/OpenID/OpenID.php" );
 # Don't disallow non-openid logins
