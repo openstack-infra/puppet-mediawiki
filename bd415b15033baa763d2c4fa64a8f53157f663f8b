@@ -1,0 +1,9 @@
+Code-Review+2: Elizabeth K. Joseph <lyz@princessleia.com>
+Code-Review+2: Clark Boylan <cboylan@sapwetik.org>
+Workflow+1: Elizabeth K. Joseph <lyz@princessleia.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 24 Feb 2016 18:45:00 +0000
+Reviewed-on: https://review.openstack.org/283716
+Project: openstack-infra/puppet-mediawiki
+Branch: refs/heads/master
