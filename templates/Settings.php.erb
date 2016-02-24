@@ -183,11 +183,18 @@ $wgExtraNamespaces[111] = 'Obsolete_talk';
 $wgNamespacesWithSubpages[110] = true;
 
 ## Extensions
-
+#
+require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
 require_once( "$IP/extensions/ConfirmEdit/QuestyCaptcha.php" );
-
 $wgCaptchaClass = 'QuestyCaptcha';
-$wgCaptchaQuestions[] = array( 'question' => 'What\'s the secret word?', 'answer' => "<%= scope.lookupvar('::mediawiki::wg_captchaquestions_answer') %>" );
+$arr = array (
+<% @wg_captchaquestions.each do|key, val| -%>
+   "<%= key %>" => "<%= val %>",
+<% end -%>
+);
+foreach ( $arr as $key => $value ) {
+    $wgCaptchaQuestions[] = array( 'question' => $key, 'answer' => $value );
+}
 $wgGroupPermissions['user'         ]['skipcaptcha'] = true;
 
 require_once( "$IP/extensions/OpenID/OpenID.php" );
