@@ -14,7 +14,9 @@ class mediawiki(
   $wg_dbpassword = undef,
   $wg_secretkey = undef,
   $wg_upgradekey = undef,
+  # TODO(pabelanger): Remove this once 284418 lands.
   $wg_captchaquestions_answer = undef,
+  $wg_captchaquestions = {},
   $wg_googleanalyticsaccount = undef,
 ) {
 
