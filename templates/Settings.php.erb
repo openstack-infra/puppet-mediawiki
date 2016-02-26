@@ -300,3 +300,10 @@ require_once( "$IP/extensions/CirrusSearch/CirrusSearch.php" );
 $wgCirrusSearchServers = array( '127.0.0.1' );
 $wgCirrusSearchShardCount = array( 'content' => 5, 'general' => 5 );
 $wgSearchType = 'CirrusSearch';
+
+# Extension:SpamBlacklist
+require_once "$IP/extensions/SpamBlacklist/SpamBlacklist.php";
+$wgSpamBlacklistFiles = array(
+   "https://meta.wikimedia.org/w/index.php?title=Spam_blacklist&action=raw&sb_ver=1",
+   "https://en.wikipedia.org/w/index.php?title=MediaWiki:Spam-blacklist&action=raw&sb_ver=1"
+);
