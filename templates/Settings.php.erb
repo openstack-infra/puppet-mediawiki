@@ -195,9 +195,13 @@ $arr = array (
 foreach ( $arr as $key => $value ) {
     $wgCaptchaQuestions[] = array( 'question' => $key, 'answer' => $value );
 }
-$wgMainCacheType             = CACHE_ANYTHING;
-$wgCaptchaTriggers['edit']   = true;
-$wgCaptchaTriggers['create'] = true;
+$wgMainCacheType                    = CACHE_ANYTHING;
+$wgCaptchaTriggers['edit']          = true;
+$wgCaptchaTriggers['create']        = true;
+$wgCaptchaTriggers['createtalk']    = true;
+$wgCaptchaTriggers['addurl']        = true;
+$wgCaptchaTriggers['createaccount'] = true;
+$wgCaptchaTriggers['badlogin']      = true;
 
 require_once( "$IP/extensions/OpenID/OpenID.php" );
 # Don't disallow non-openid logins
