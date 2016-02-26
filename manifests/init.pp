@@ -40,6 +40,13 @@ class mediawiki(
       require => File['/srv/mediawiki'],
     }
 
+    # Disable external access to prevent spamming.
+    file { '/srv/mediawiki/includes/specials/SpecialRunJobs.php':
+      ensure  => file,
+      mode    => '0000',
+      require => Class['::mediawiki::app'],
+    }
+
     include ::httpd
     include ::mediawiki::php
     include ::mediawiki::app
