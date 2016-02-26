@@ -40,6 +40,14 @@ class mediawiki(
       require => File['/srv/mediawiki'],
     }
 
+    # Disable external access to prevent spamming.
+    # Original permission was 0644
+    file { '/srv/mediawiki/w/includes/specials':
+      ensure  => file,
+      mode    => '0000',
+      require => Class['::mediawiki::app'],
+    }
+
     include ::httpd
     include ::mediawiki::php
     include ::mediawiki::app
