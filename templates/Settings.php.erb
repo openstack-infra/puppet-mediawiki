@@ -300,3 +300,10 @@ require_once( "$IP/extensions/CirrusSearch/CirrusSearch.php" );
 $wgCirrusSearchServers = array( '127.0.0.1' );
 $wgCirrusSearchShardCount = array( 'content' => 5, 'general' => 5 );
 $wgSearchType = 'CirrusSearch';
+
+# Disable password based login
+function disableSomeSpecialPages(&$list) {
+        unset($list['Userlogin']);
+        return true;
+}
+$wgHooks['SpecialPage_initList'][]='disableSomeSpecialPages';
