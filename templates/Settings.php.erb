@@ -307,3 +307,11 @@ $wgSpamBlacklistFiles = array(
    "https://meta.wikimedia.org/w/index.php?title=Spam_blacklist&action=raw&sb_ver=1",
    "https://en.wikipedia.org/w/index.php?title=MediaWiki:Spam-blacklist&action=raw&sb_ver=1"
 );
+
+# Disable password based login
+function disableSomeSpecialPages(&$list) {
+        unset($list['Userlogin']);
+        return true;
+}
+$wgHooks['SpecialPage_initList'][]='disableSomeSpecialPages';
+
