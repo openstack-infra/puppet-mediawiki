@@ -319,3 +319,6 @@ function disableSomeSpecialPages(&$list) {
 }
 $wgHooks['SpecialPage_initList'][]='disableSomeSpecialPages';
 
+# Extension:SmiteSpam
+# https://www.mediawiki.org/wiki/Extension:SmiteSpam
+require_once "$IP/extensions/SmiteSpam/SmiteSpam.php";
