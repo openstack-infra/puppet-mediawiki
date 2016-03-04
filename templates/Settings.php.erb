@@ -212,6 +212,9 @@ require_once( "$IP/extensions/OpenID/OpenID.php" );
 $wgOpenIDOnly = false;
 # Automatically mark email addreses provided by openid as verified
 $wgOpenIDTrustEmailAddress = true;
+# When first-time logging-in with OpenID, use the part before the @ in any given
+# e-mail address as the username if a nickname is not given by the OpenID
+$wgOpenIDUseEmailAsNickname = true;
 # Our servername
 $wgTrustRoot = 'https://wiki.openstack.org/';
 # Only allow login through launchpad (in earlier versions of the plugin,
