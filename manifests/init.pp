@@ -1,23 +1,23 @@
 # Class: mediawiki
 #
 class mediawiki(
-  $role = 'all',
-  $site_hostname = $::fqdn,
-  $mediawiki_location = '/srv/mediawiki/w',
-  $mediawiki_images_location = '/srv/mediawiki/images',
-  $ssl_cert_file = '/etc/ssl/certs/ssl-cert-snakeoil.pem',
-  $ssl_key_file = '/etc/ssl/private/ssl-cert-snakeoil.key',
-  $ssl_chain_file = undef,
-  $ssl_cert_file_contents = undef, # If left empty puppet will not create file.
-  $ssl_key_file_contents = undef,  # If left empty puppet will not create file.
-  $ssl_chain_file_contents = undef, # If left empty puppet will not create file.
-  $wg_dbpassword = undef,
-  $wg_secretkey = undef,
-  $wg_upgradekey = undef,
+  $mediawiki_location         = '/srv/mediawiki/w',
+  $mediawiki_images_location  = '/srv/mediawiki/images',
+  $role                       = 'all',
+  $site_hostname              = $::fqdn,
+  $ssl_cert_file              = '/etc/ssl/certs/ssl-cert-snakeoil.pem',
+  $ssl_cert_file_contents     = undef, # If left empty puppet will not create file.
+  $ssl_chain_file             = undef,
+  $ssl_chain_file_contents    = undef, # If left empty puppet will not create file.
+  $ssl_key_file               = '/etc/ssl/private/ssl-cert-snakeoil.key',
+  $ssl_key_file_contents      = undef,  # If left empty puppet will not create file.
+  $wg_captchaquestions        = {},
   # TODO(pabelanger): Remove this once 284418 lands.
   $wg_captchaquestions_answer = undef,
-  $wg_captchaquestions = {},
-  $wg_googleanalyticsaccount = undef,
+  $wg_googleanalyticsaccount  = undef,
+  $wg_dbpassword              = undef,
+  $wg_secretkey               = undef,
+  $wg_upgradekey              = undef,
 ) {
 
   if ($role == 'app' or $role == 'all') {
