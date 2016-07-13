@@ -146,7 +146,7 @@ $wgGroupPermissions['*']['edit'] = false;
 # Prevent new user registrations except by sysops
 # Create account with OpenID (openid-create-account-with-openid) should not be
 # affected
-$wgGroupPermissions['*']['createaccount'] = false;
+#$wgGroupPermissions['*']['createaccount'] = false;
 
 ## Content suppression (for *really* nasty spam or DMCA notices)
 # Allow sysops to hide revisions/log items from users
@@ -189,16 +189,14 @@ $wgNamespacesWithSubpages[110] = true;
 ## Extensions
 # https://www.mediawiki.org/wiki/Extension:QuestyCaptcha
 require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
-require_once( "$IP/extensions/ConfirmEdit/QuestyCaptcha.php" );
-$wgCaptchaClass = 'QuestyCaptcha';
-$arr = array (
-<% @wg_captchaquestions.each do|key, val| -%>
-   "<%= key %>" => "<%= val %>",
-<% end -%>
-);
-foreach ( $arr as $key => $value ) {
-    $wgCaptchaQuestions[] = array( 'question' => $key, 'answer' => $value );
-}
+
+#Enable ReCaptcha
+require_once "$IP/extensions/ConfirmEdit/ReCaptcha.php";
+
+$wgCaptchaClass = 'ReCaptcha';
+$wgReCaptchaPublicKey = <%= @wg_recaptchapublickey %>;
+$wgReCaptchaPrivateKey = <%= @wg_recaptchaprivatekey %>;
+
 $wgMainCacheType                    = CACHE_ANYTHING;
 $wgCaptchaTriggers['edit']          = true;
 $wgCaptchaTriggers['create']        = true;
@@ -207,7 +205,10 @@ $wgCaptchaTriggers['addurl']        = true;
 $wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badlogin']      = true;
 
+
+#OpenID
 require_once( "$IP/extensions/OpenID/OpenID.php" );
+
 # Don't disallow non-openid logins
 $wgOpenIDOnly = false;
 # Automatically mark email addreses provided by openid as verified
