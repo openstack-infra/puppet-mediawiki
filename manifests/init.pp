@@ -11,9 +11,11 @@ class mediawiki(
   $ssl_chain_file_contents    = undef, # If left empty puppet will not create file.
   $ssl_key_file               = '/etc/ssl/private/ssl-cert-snakeoil.key',
   $ssl_key_file_contents      = undef,  # If left empty puppet will not create file.
+  $wg_recaptchapublickey      = undef,
+  $wg_recaptchaprivatekey     = undef,
+  # TODO(fungi): wg_captchaquestions can be removed once 342372 merges
   $wg_captchaquestions        = {},
-  # TODO(pabelanger): Remove this once 284418 lands.
-  $wg_captchaquestions_answer = undef,
+  
   $wg_googleanalyticsaccount  = undef,
   $wg_dbpassword              = undef,
   $wg_secretkey               = undef,
