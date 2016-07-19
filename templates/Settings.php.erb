@@ -194,8 +194,8 @@ require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
 require_once "$IP/extensions/ConfirmEdit/ReCaptcha.php";
 
 $wgCaptchaClass = 'ReCaptcha';
-$wgReCaptchaPublicKey = <%= @wg_recaptchapublickey %>;
-$wgReCaptchaPrivateKey = <%= @wg_recaptchaprivatekey %>;
+$wgReCaptchaPublicKey = "<%= @wg_recaptchapublickey %>";
+$wgReCaptchaPrivateKey = "<%= @wg_recaptchaprivatekey %>";
 
 $wgMainCacheType                    = CACHE_ANYTHING;
 $wgCaptchaTriggers['edit']          = true;
