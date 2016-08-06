@@ -72,6 +72,15 @@
 		# Don't run arbitrary PHP code.
 		php_admin_flag engine off
 	</Directory>
+        <Directory "<%= scope.lookupvar('mediawiki::mediawiki_location') %>">
+                <IfVersion >= 2.4>
+                        Require all granted
+                </IfVersion>
+                <IfVersion < 2.4>
+                        Order allow,deny
+                        allow from all
+                </IfVersion>
+        </Directory>
 	<IfModule mod_expires.c>
 		ExpiresActive On
 		<Directory "<%= scope.lookupvar('mediawiki::mediawiki_location') %>">
