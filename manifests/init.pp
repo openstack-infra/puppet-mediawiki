@@ -43,6 +43,12 @@ class mediawiki(
     include ::mediawiki::php
     include ::mediawiki::app
 
+    file { '/srv/mediawiki/w/LocalSettings.php':
+        ensure  => link,
+        target  => '../Settings.php',
+        require => Vcsrepo['/srv/mediawiki/w'],
+    }
+
     package { ['libapache2-mod-php5',
       'lua5.2']:
       ensure => present,
