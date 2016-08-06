@@ -5,7 +5,13 @@ class mediawiki::app {
     ensure   => present,
     provider => git,
     source   => 'https://gerrit.wikimedia.org/r/p/mediawiki/core.git',
-    revision => 'origin/master',
+    revision => 'origin/master', # TODO: This is madness.
+  }
+  vcsrepo { '/srv/mediawiki/w/vendor':
+    ensure   => present,
+    provider => git,
+    source   => 'https://gerrit.wikimedia.org/r/p/mediawiki/vendor.git',
+    revision => 'origin/master', # TODO: No.
   }
 }
 
