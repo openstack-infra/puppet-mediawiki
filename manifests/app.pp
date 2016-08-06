@@ -1,17 +1,21 @@
 # Class: mediawiki::app
 #
 class mediawiki::app {
+  $revision = $::lsbdistcodename ? {
+    'precise' => 'origin/master', # madness
+    'trusty'  => 'origin/REL1_27',
+  }
   vcsrepo { '/srv/mediawiki/w':
     ensure   => present,
     provider => git,
     source   => 'https://gerrit.wikimedia.org/r/p/mediawiki/core.git',
-    revision => 'origin/master', # TODO: This is madness.
+    revision => $revision,
   }
   vcsrepo { '/srv/mediawiki/w/vendor':
     ensure   => present,
     provider => git,
     source   => 'https://gerrit.wikimedia.org/r/p/mediawiki/vendor.git',
-    revision => 'origin/master', # TODO: No.
+    revision => $revision,
   }
 }
 
