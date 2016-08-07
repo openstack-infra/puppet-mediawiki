@@ -6,7 +6,8 @@ class mediawiki::php {
     'php5-mysql',
     'php-apc',
     'php5-intl',
-    'php-openid']:
+    'php-openid',
+    'php5-memcached']:
     ensure => present,
   }
   # TODO: apc configuration
