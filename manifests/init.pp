@@ -43,6 +43,52 @@ class mediawiki(
     include ::mediawiki::php
     include ::mediawiki::app
 
+    mediawiki::extension { [ 'ConfirmEdit',
+        'OpenID',
+        'Renameuser',
+        'WikiEditor',
+        'CodeEditor',
+        'Scribunto',
+        'Gadgets',
+        'CategoryTree',
+        'ParserFunctions',
+        'SyntaxHighlight_GeSHi',
+        'Cite',
+        'cldr',
+        'Babel',
+        'Translate',
+        'Collection',
+        'Nuke',
+        'AntiSpoof',
+        'Mantle',
+        'MobileFrontend',
+        'SubPageList3',
+        'ReplaceText',
+        'googleAnalytics',
+        'Echo',
+        'UniversalLanguageSelector',
+        'Elastica',
+        'CirrusSearch',
+        'SpamBlacklist',
+        'SmiteSpam' ]:
+    }
+
+    mediawiki::extension { 'EmbedVideo':
+        ensure   => present,
+        source   => 'https://github.com/HydraWiki/mediawiki-embedvideo.git',
+        revision => 'origin/master', # Not from Wikimedia repos :(
+    }
+    if $::lsbdistcodename == 'precise' {
+        # On trusty we use 1.27, which has this extension merged into core
+        # See https://phabricator.wikimedia.org/T108213
+        mediawiki::extension { 'OpenSearchXml': }
+    }
+
+    mediawiki::extension { 'strapping':
+        type   => 'skin',
+        source => 'https://gerrit.wikimedia.org/r/p/mediawiki/skins/mediawiki-strapping.git',
+    }
+
     file { '/srv/mediawiki/w/LocalSettings.php':
         ensure  => link,
         target  => '../Settings.php',
