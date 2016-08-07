@@ -278,8 +278,10 @@ include_once("$IP/extensions/Mantle/Mantle.php");
 require_once("$IP/extensions/MobileFrontend/MobileFrontend.php");
 $wgMFAutodetectMobileView = true;
 
-# Needed by MobileFrontend
-require_once( "$IP/extensions/OpenSearchXml/OpenSearchXml.php" );
+if ( file_exists( "$IP/extensions/OpenSearchXml" ) ) {
+	# Needed by MobileFrontend
+	require_once( "$IP/extensions/OpenSearchXml/OpenSearchXml.php" );
+}
 
 require_once( "$IP/extensions/SubPageList3/SubPageList3.php" );
 
