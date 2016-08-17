@@ -155,6 +155,10 @@ $wgGroupPermissions['suppress']['suppressrevision'] = true;
 # Allow members of the suppress group to see the supression log
 $wgGroupPermissions['suppress']['suppressionlog'] = true;
 
+# Allow known-good users to be listed in an 'autopatrol' group so their
+# edits are automatically marked as 'patrolled'
+$wgGroupPermissions['autopatrol']['autopatrol']  = true;
+
 # Useful for debugging purposes, and doesn't expose very sensitive info
 $wgShowExceptionDetails = true;
 
