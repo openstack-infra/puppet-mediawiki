@@ -78,11 +78,6 @@ class mediawiki(
         source   => 'https://github.com/HydraWiki/mediawiki-embedvideo.git',
         revision => 'origin/master', # Not from Wikimedia repos :(
     }
-    if $::lsbdistcodename == 'precise' {
-        # On trusty we use 1.27, which has this extension merged into core
-        # See https://phabricator.wikimedia.org/T108213
-        mediawiki::extension { 'OpenSearchXml': }
-    }
 
     mediawiki::extension { 'strapping':
         type   => 'skin',

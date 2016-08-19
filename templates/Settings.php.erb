@@ -282,11 +282,6 @@ include_once("$IP/extensions/Mantle/Mantle.php");
 require_once("$IP/extensions/MobileFrontend/MobileFrontend.php");
 $wgMFAutodetectMobileView = true;
 
-if ( file_exists( "$IP/extensions/OpenSearchXml" ) ) {
-	# Needed by MobileFrontend
-	require_once( "$IP/extensions/OpenSearchXml/OpenSearchXml.php" );
-}
-
 require_once( "$IP/extensions/SubPageList3/SubPageList3.php" );
 
 require_once( "$IP/extensions/EmbedVideo/EmbedVideo.php" );
