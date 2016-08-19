@@ -1,0 +1,9 @@
+Code-Review+2: Elizabeth K. Joseph <lyz@princessleia.com>
+Code-Review+2: Jeremy Stanley <fungi@yuggoth.org>
+Workflow+1: Jeremy Stanley <fungi@yuggoth.org>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 19 Aug 2016 00:12:49 +0000
+Reviewed-on: https://review.openstack.org/352033
+Project: openstack-infra/puppet-mediawiki
+Branch: refs/heads/master
