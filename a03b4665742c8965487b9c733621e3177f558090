@@ -1,0 +1,10 @@
+Code-Review+2: yolanda.robla <yroblamo@redhat.com>
+Code-Review+1: Alexander Monk <krenair@gmail.com>
+Code-Review+2: Jeremy Stanley <fungi@yuggoth.org>
+Workflow+1: Jeremy Stanley <fungi@yuggoth.org>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 19 Aug 2016 02:00:12 +0000
+Reviewed-on: https://review.openstack.org/356313
+Project: openstack-infra/puppet-mediawiki
+Branch: refs/heads/master
