@@ -12,8 +12,10 @@ class mediawiki(
   $ssl_chain_file_contents    = undef,
   $ssl_key_file               = undef,
   $ssl_key_file_contents      = undef,
-  $wg_recaptchapublickey      = undef,
-  $wg_recaptchaprivatekey     = undef,
+  $wg_recaptchapublickey      = undef, # TODO: remove (no longer used)
+  $wg_recaptchaprivatekey     = undef, # TODO: remove (no longer used)
+  $wg_recaptchasitekey        = undef,
+  $wg_recaptchasecretkey      = undef,
   $wg_googleanalyticsaccount  = undef,
   $wg_dbserver                = 'localhost',
   $wg_dbname                  = 'openstack_wiki',
