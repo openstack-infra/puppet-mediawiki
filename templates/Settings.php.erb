@@ -39,9 +39,9 @@ $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype           = "mysql";
-$wgDBserver         = "localhost";
-$wgDBname           = "openstack_wiki";
-$wgDBuser           = "wikiuser";
+$wgDBserver         = "<%= scope['mediawiki::wg_dbserver'] %>";
+$wgDBname           = "<%= scope['mediawiki::wg_dbname'] %>";
+$wgDBuser           = "<%= scope['mediawiki::wg_dbuser'] %>";
 $wgDBpassword       = "<%= scope['mediawiki::wg_dbpassword'] %>";
 
 # MySQL specific settings
