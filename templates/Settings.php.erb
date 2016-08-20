@@ -42,7 +42,7 @@ $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
 $wgDBname           = "openstack_wiki";
 $wgDBuser           = "wikiuser";
-$wgDBpassword       = "<%= scope.lookupvar('::mediawiki::wg_dbpassword') %>";
+$wgDBpassword       = "<%= scope['mediawiki::wg_dbpassword'] %>";
 
 # MySQL specific settings
 $wgDBprefix         = "";
@@ -117,11 +117,11 @@ $wgShellLocale = "en_US.utf8";
 # Site language code, should be one of the list in ./languages/Names.php
 $wgLanguageCode = "en";
 
-$wgSecretKey = "<%= scope.lookupvar('::mediawiki::wg_secretkey') %>";
+$wgSecretKey = "<%= scope['mediawiki::wg_secretkey'] %>";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "<%= scope.lookupvar('::mediawiki::wg_upgradekey') %>";
+$wgUpgradeKey = "<%= scope['mediawiki::wg_upgradekey'] %>";
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
@@ -290,7 +290,7 @@ require_once( "$IP/extensions/ReplaceText/ReplaceText.php" );
 $wgGroupPermissions['sysop']['replacetext'] = true;
 
 require_once( "$IP/extensions/googleAnalytics/googleAnalytics.php" );
-$wgGoogleAnalyticsAccount = "<%= scope.lookupvar('::mediawiki::wg_googleanalyticsaccount') %>";
+$wgGoogleAnalyticsAccount = "<%= scope['mediawiki::wg_googleanalyticsaccount'] %>";
 
 require_once( "$IP/extensions/Echo/Echo.php" );
 
