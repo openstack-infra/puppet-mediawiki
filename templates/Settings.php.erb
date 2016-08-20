@@ -39,9 +39,9 @@ $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype           = "mysql";
-$wgDBserver         = "localhost";
-$wgDBname           = "openstack_wiki";
-$wgDBuser           = "wikiuser";
+$wgDBserver         = "<%= @wg_dbserver %>";
+$wgDBname           = "<%= @wg_dbname %>";
+$wgDBuser           = "<%= @wg_dbuser %>";
 $wgDBpassword       = "<%= @wg_dbpassword %>";
 
 # MySQL specific settings
