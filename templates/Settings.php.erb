@@ -189,12 +189,11 @@ $wgNamespacesWithSubpages[110] = true;
 # https://www.mediawiki.org/wiki/Extension:QuestyCaptcha
 require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
 
-#Enable ReCaptcha
-require_once "$IP/extensions/ConfirmEdit/ReCaptcha.php";
-
-$wgCaptchaClass = 'ReCaptcha';
-$wgReCaptchaPublicKey = "<%= @wg_recaptchapublickey %>";
-$wgReCaptchaPrivateKey = "<%= @wg_recaptchaprivatekey %>";
+#Enable ReCaptchaNoCaptcha
+wfLoadExtensions( array( 'ConfirmEdit', 'ConfirmEdit/ReCaptchaNoCaptcha' ) );
+$wgCaptchaClass = 'ReCaptchaNoCaptcha';
+$wgReCaptchaSiteKey = "<%= @wg_recaptchasitekey %>";
+$wgReCaptchaSecretKey = "<%= @wg_recaptchasecretkey %>";
 
 $wgMainCacheType                    = CACHE_ANYTHING;
 $wgCaptchaTriggers['edit']          = true;
