@@ -16,11 +16,14 @@ class mediawiki(
   $wg_recaptchasecretkey      = undef,
   $wg_googleanalyticsaccount  = undef,
   $wg_dbserver                = 'localhost',
-  $wg_dbname                  = 'openstack_wiki',
+  $wg_dbname                  = 'wikidb',
   $wg_dbuser                  = 'wikiuser',
   $wg_dbpassword              = undef,
   $wg_secretkey               = undef,
   $wg_upgradekey              = undef,
+  $wg_sitename                = undef,
+  $wg_logo                    = undef,
+  $wg_openidforcedprovider    = 'https://login.launchpad.net/+openid',
 ) {
 
   if ($role == 'app' or $role == 'all') {
