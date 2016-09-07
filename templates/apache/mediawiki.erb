@@ -95,6 +95,11 @@
   Alias /w <%= scope['mediawiki::mediawiki_location'] %>
   Alias /wiki <%= scope['mediawiki::mediawiki_location'] %>/index.php
 
+<% if scope['mediawiki::disallow_robots'] == true %>
+  # Request that search engines not index this site
+  Alias /robots.txt /srv/mediawiki/robots.txt
+<% end %>
+
   # Redirect old /Article_Name urls
   RewriteEngine on
   RewriteCond %{REQUEST_URI} !^/w/

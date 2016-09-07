@@ -24,6 +24,7 @@ class mediawiki(
   $wg_sitename                = undef,
   $wg_logo                    = undef,
   $wg_openidforcedprovider    = 'https://login.launchpad.net/+openid',
+  $disallow_robots            = false,
 ) {
 
   if ($role == 'app' or $role == 'all') {
@@ -44,6 +45,17 @@ class mediawiki(
       mode    => '0640',
       owner   => 'root',
       require => File['/srv/mediawiki'],
+    }
+
+    if $disallow_robots == true {
+      file { '/srv/mediawiki/robots.txt':
+        ensure  => file,
+        group   => 'root',
+        mode    => '0444',
+        owner   => 'root',
+        source  => 'puppet:///modules/mediawiki/disallow_robots.txt',
+        require => File['/srv/mediawiki'],
+      }
     }
 
     include ::httpd
