@@ -161,6 +161,9 @@ $wgGroupPermissions['suppress']['suppressionlog'] = true;
 # Allow known-good users to be listed in an 'autopatrol' group so their
 # edits are automatically marked as 'patrolled'
 $wgGroupPermissions['autopatrol']['autopatrol']  = true;
+# Autopatrol users are legit, so don't need a CAPTCHA
+$wgGroupPermissions['autopatrol']['skipcaptcha'] = true; 
+
 
 # Useful for debugging purposes, and doesn't expose very sensitive info
 $wgShowExceptionDetails = true;
