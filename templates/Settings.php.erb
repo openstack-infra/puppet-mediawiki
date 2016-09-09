@@ -206,6 +206,9 @@ $wgCaptchaTriggers['addurl']        = true;
 $wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badlogin']      = true;
 
+# Skip captcha enforcement on any users who have been vetted into autopatrol
+$wgGroupPermissions['autopatrol']['skipcaptcha'] = true;
+
 
 #OpenID
 require_once( "$IP/extensions/OpenID/OpenID.php" );
