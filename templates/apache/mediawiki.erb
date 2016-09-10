@@ -98,10 +98,16 @@
 <% if scope['mediawiki::disallow_robots'] == true %>
   # Request that search engines not index this site
   Alias /robots.txt /srv/mediawiki/robots.txt
+  <Directory "/srv/mediawiki/robots.txt">
+    Require all granted
+  </Directory>
 <% end %>
 
   # Redirect old /Article_Name urls
   RewriteEngine on
+<% if scope['mediawiki::disallow_robots'] == true %>
+  RewriteCond %{REQUEST_URI} !^/robots.txt$
+<% end %>
   RewriteCond %{REQUEST_URI} !^/w/
   RewriteCond %{REQUEST_URI} !^/wiki/
   RewriteRule ^/(.*)$ https://<%= @vhost_name %>/wiki/$1 [L,R]
