@@ -164,6 +164,18 @@ $wgGroupPermissions['autopatrol']['autopatrol']  = true;
 # Autopatrol users are legit, so don't need a CAPTCHA
 $wgGroupPermissions['autopatrol']['skipcaptcha'] = true;
 
+# Only let known-good users upload files
+$wgGroupPermissions['user']['upload'] = false;
+$wgGroupPermissions['autopatrol']['upload'] = true;
+
+# Only let known-good users move pages and files
+$wgGroupPermissions['user']['move'] = false;
+$wgGroupPermissions['autopatrol']['move'] = true;
+
+# Only let known-good users the write API
+$wgGroupPermissions['user']['writeapi'] = false;
+$wgGroupPermissions['autopatrol']['writeapi'] = true;
+
 
 # Useful for debugging purposes, and doesn't expose very sensitive info
 $wgShowExceptionDetails = true;
