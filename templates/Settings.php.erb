@@ -177,6 +177,9 @@ $wgGroupPermissions['user']['writeapi'] = false;
 $wgGroupPermissions['autopatrol']['writeapi'] = true;
 
 
+# rate limit page creation by non-verified users to 5 per day
+$wgRateLimits['createpage']['user'] =  (5, 86400);
+
 # Useful for debugging purposes, and doesn't expose very sensitive info
 $wgShowExceptionDetails = true;
 
