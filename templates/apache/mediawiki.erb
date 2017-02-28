@@ -98,6 +98,13 @@
   Alias /w <%= scope['mediawiki::mediawiki_location'] %>
   Alias /wiki <%= scope['mediawiki::mediawiki_location'] %>/index.php
 
+<% if scope['mediawiki::favicon_path'] != nil %>
+  Alias /favicon.ico <%= scope['mediawiki::favicon_path'] %>
+  <Directory "/srv/mediawiki/favicon.ico">
+    Require all granted
+  </Directory>
+<% end %>
+
 <% if scope['mediawiki::disallow_robots'] == true %>
   # Request that search engines not index this site
   Alias /robots.txt /srv/mediawiki/robots.txt
