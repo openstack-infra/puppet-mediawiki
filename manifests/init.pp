@@ -23,6 +23,7 @@ class mediawiki(
   $wg_upgradekey              = undef,
   $wg_sitename                = undef,
   $wg_logo                    = undef,
+  $favicon_path               = undef,
   $wg_openidforcedprovider    = 'https://login.launchpad.net/+openid',
   $disallow_robots            = false,
 ) {
