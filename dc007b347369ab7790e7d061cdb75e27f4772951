@@ -1,0 +1,10 @@
+Code-Review+1: Alex Monk <krenair@gmail.com>
+Code-Review+2: Joshua Hesketh <josh@nitrotech.org>
+Code-Review+2: Jens Harbott (frickler) <j.harbott@x-ion.de>
+Workflow+1: Jens Harbott (frickler) <j.harbott@x-ion.de>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 17 Dec 2018 16:33:14 +0000
+Reviewed-on: https://review.openstack.org/439082
+Project: openstack-infra/puppet-mediawiki
+Branch: refs/heads/master
