@@ -24,7 +24,7 @@ class mediawiki(
   $wg_sitename                = undef,
   $wg_logo                    = undef,
   $favicon_path               = undef,
-  $wg_openidforcedprovider    = 'https://login.launchpad.net/+openid',
+  $wg_openidforcedprovider    = 'https://login.ubuntu.com/+openid',
   $disallow_robots            = false,
 ) {
 
