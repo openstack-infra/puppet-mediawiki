@@ -110,7 +110,7 @@ class mediawiki(
         require => Vcsrepo['/srv/mediawiki/w'],
     }
 
-    package { ['libapache2-mod-php5',
+    package { ['libapache2-mod-php',
       'lua5.2']:
       ensure => present,
     }
