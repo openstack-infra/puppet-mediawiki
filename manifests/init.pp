@@ -31,7 +31,7 @@ class mediawiki(
   if ($role == 'app' or $role == 'all') {
     # This is equivalent to apache::dev which is not puppet3
     # compatible with puppetlabs-apache 0.0.4:
-    package { ['libaprutil1-dev', 'libapr1-dev', 'apache2-prefork-dev']:
+    package { 'apache2-dev':
       ensure => present,
     }
 

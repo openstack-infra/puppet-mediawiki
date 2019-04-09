@@ -1,13 +1,13 @@
 # Class: mediawiki::php
 #
 class mediawiki::php {
-  package { ['php5',
-    'php5-cli',
-    'php5-mysql',
+  package { ['php',
+    'php-cli',
+    'php-mysql',
     'php-apc',
-    'php5-intl',
+    'php-intl',
     'php-openid',
-    'php5-memcached']:
+    'php-memcached']:
     ensure => present,
   }
   # TODO: apc configuration
